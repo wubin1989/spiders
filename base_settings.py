@@ -19,8 +19,8 @@ YUN_DAMA_KEY = 'yundama_user'  # {'username': '', 'password': '', 'appkey': ''}
 SERVER_IP_KEY = 'sever_ip'  # ip
 PROXY_AUTH = 'proxy_auth'  # 代理认证
 
-SPIDER_LOG_DIR = '/data/logs/spider'
-SERVER_LOG_DIR = '/data/logs/server'
+SPIDER_LOG_DIR = '/Users/admin/wubin/projects/spiders/spiders/data/logs/spider'
+SERVER_LOG_DIR = '/Users/admin/wubin/projects/spiders/spiders/data/logs/server'
 
 MONGO_SETTING = {
     'host': '127.0.0.1',

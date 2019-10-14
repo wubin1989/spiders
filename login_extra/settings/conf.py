@@ -27,7 +27,7 @@ from base_settings import *
 LOGIN_PLATS = []
 CRAWL_PLATS = []
 
-DIR_ = '/data/logs/images/'
+DIR_ = '/Users/admin/wubin/projects/spiders/spiders/data/logs/images/'
 if not os.path.exists(DIR_):
     os.system('mkdir -p {}'.format(DIR_))
 

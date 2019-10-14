@@ -4,16 +4,17 @@ from decrypt_methed import *
 data_url = 'http://index.baidu.com/api/SearchApi/index?area=0&word={keyword}&startDate={startdate}&endDate={enddate}'
 
 def run(params):
-    r_task = redis.Redis(**REDIS_SPIDER)
-    val = r_task.get('baidu_BDUSS')
+    # r_task = redis.Redis(**REDIS_SPIDER)
+    # val = r_task.get('baidu_BDUSS')
+    val = 'FhbVlPU3ZJV25IelVNeUdVWEdmdDQ4RHpvVEtXWC1OekJUQWpIQ3BUc0tic3RkRVFBQUFBJCQAAAAAAAAAAAEAAABRtnY~AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArho10K4aNdQ2'
     url = data_url.format(**params)
     # BDUSS替换成自己登陆后的值
     headers = dict(dict(
-        Cookie='BDUSS={}'.format(val.decode()),
+        Cookie='BDUSS={}'.format(val),
         Host='index.baidu.com',
         Referer='http://index.baidu.com/v2/main/index.html',
     ))
-    response = requests.get(url, headers=headers, proxies=get_proxy())
+    response = requests.get(url, headers=headers)
     if 'not login' in response.text:
         print('----未登录, response:{}'.format(response.text))
         return
@@ -26,7 +27,7 @@ def run(params):
     time.sleep(1)
     uniqid = data['uniqid']
     uniqid_url = 'https://index.baidu.com/Interface/api/ptbk?uniqid={}'.format(uniqid)
-    response = requests.get(uniqid_url, headers=headers, proxies=get_proxy())
+    response = requests.get(uniqid_url, headers=headers)
     key_data = loads_data(response, 'data')
 
     # 解密数据
